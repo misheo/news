@@ -10,6 +10,8 @@ dependencies:
   dio: ^5.5.0+1
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_native_splash: ^2.4.1
   flutter_screenutil: ^5.9.3
   freezed: ^2.5.2
@@ -33,3 +35,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
