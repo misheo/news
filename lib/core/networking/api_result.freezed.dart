@@ -19,19 +19,19 @@ mixin _$ApiResult<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(Map<String, dynamic> message) failure,
+    required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(Map<String, dynamic> message)? failure,
+    TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(Map<String, dynamic> message)? failure,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,7 +140,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(Map<String, dynamic> message) failure,
+    required TResult Function(String message) failure,
   }) {
     return success(data);
   }
@@ -149,7 +149,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(Map<String, dynamic> message)? failure,
+    TResult? Function(String message)? failure,
   }) {
     return success?.call(data);
   }
@@ -158,7 +158,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(Map<String, dynamic> message)? failure,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -214,7 +214,7 @@ abstract class _$$FailureImplCopyWith<T, $Res> {
           _$FailureImpl<T> value, $Res Function(_$FailureImpl<T>) then) =
       __$$FailureImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({Map<String, dynamic> message});
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -232,9 +232,9 @@ class __$$FailureImplCopyWithImpl<T, $Res>
   }) {
     return _then(_$FailureImpl<T>(
       null == message
-          ? _value._message
+          ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as String,
     ));
   }
 }
@@ -242,15 +242,10 @@ class __$$FailureImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$FailureImpl<T> implements Failure<T> {
-  const _$FailureImpl(final Map<String, dynamic> message) : _message = message;
+  const _$FailureImpl(this.message);
 
-  final Map<String, dynamic> _message;
   @override
-  Map<String, dynamic> get message {
-    if (_message is EqualUnmodifiableMapView) return _message;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_message);
-  }
+  final String message;
 
   @override
   String toString() {
@@ -262,12 +257,11 @@ class _$FailureImpl<T> implements Failure<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailureImpl<T> &&
-            const DeepCollectionEquality().equals(other._message, _message));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -279,7 +273,7 @@ class _$FailureImpl<T> implements Failure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(Map<String, dynamic> message) failure,
+    required TResult Function(String message) failure,
   }) {
     return failure(message);
   }
@@ -288,7 +282,7 @@ class _$FailureImpl<T> implements Failure<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(Map<String, dynamic> message)? failure,
+    TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
   }
@@ -297,7 +291,7 @@ class _$FailureImpl<T> implements Failure<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(Map<String, dynamic> message)? failure,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -339,9 +333,9 @@ class _$FailureImpl<T> implements Failure<T> {
 }
 
 abstract class Failure<T> implements ApiResult<T> {
-  const factory Failure(final Map<String, dynamic> message) = _$FailureImpl<T>;
+  const factory Failure(final String message) = _$FailureImpl<T>;
 
-  Map<String, dynamic> get message;
+  String get message;
   @JsonKey(ignore: true)
   _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
