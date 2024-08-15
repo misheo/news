@@ -34,7 +34,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              '/sources',
+              'v2/top-headlines/sources',
               queryParameters: queryParameters,
               data: _data,
             )

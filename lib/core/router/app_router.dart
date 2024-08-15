@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news/core/DI/debendency_injection.dart';
 
-import '../../features/home/home_screen.dart';
+import '../../features/home/UI/home_screen.dart';
 import '../../features/home/logic/cubit/sources_cubit.dart';
 import 'routes.dart';
 
@@ -28,10 +28,8 @@ class AppRouter {
               path: Routes.home,
               name: 'home',
               builder: (BuildContext context, GoRouterState state) {
-                return BlocProvider(
-                  create: (context) => getIt<SourcesCubit>(),
-                  child: const HomeScreen(),
-                );
+                return  const HomeScreen() ; 
+                
               },
             ),
             GoRoute(
