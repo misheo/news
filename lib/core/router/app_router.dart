@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news/core/DI/debendency_injection.dart';
 
 import '../../features/home/home_screen.dart';
+import '../../features/home/logic/cubit/sources_cubit.dart';
 import 'routes.dart';
 
 class AppRouter {
@@ -13,12 +16,9 @@ class AppRouter {
 
   AppRouter() {
     _router = GoRouter(
-      
-      
       debugLogDiagnostics: true,
       routes: <RouteBase>[
         ShellRoute(
-          
           navigatorKey: shellNavigatorKey,
           builder: (BuildContext context, GoRouterState state, child) {
             return const HomeScreen();
@@ -28,9 +28,12 @@ class AppRouter {
               path: Routes.home,
               name: 'home',
               builder: (BuildContext context, GoRouterState state) {
-                return const HomeScreen();
+                return BlocProvider(
+                  create: (context) => getIt<SourcesCubit>(),
+                  child: const HomeScreen(),
+                );
               },
-            ) , 
+            ),
             GoRoute(
               path: Routes.details,
               parentNavigatorKey: shellNavigatorKey,

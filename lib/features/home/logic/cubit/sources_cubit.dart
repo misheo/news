@@ -10,9 +10,9 @@ class SourcesCubit extends Cubit<SourcesState> {
   final SourcesRebo _sourcesRebo ;
   SourcesCubit(this._sourcesRebo) : super(const SourcesState.initial());
 
-  Future<void> getSources(String source) async {
+  Future<void> getSources() async {
     emit(const SourcesState.loading());
-    final response = await _sourcesRebo.getSources(source);
+    final response = await _sourcesRebo.getSources();
     response.when(
       success: (data) => emit(SourcesState.loaded(data: data)),
       failure: (message) => emit(SourcesState.error(message: message)),
