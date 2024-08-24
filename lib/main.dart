@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news/news_app.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+import 'core/DI/debendency_injection.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+  // set up the initial route
+
+  await ScreenUtil.ensureScreenSize();
+  setupGetIt();
+  runApp(const NewsApp());
 }

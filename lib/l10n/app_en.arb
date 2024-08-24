@@ -1,0 +1,23 @@
+{
+    "pickC":"Pick your category of interest" , 
+    "appname": "News App",
+    "sports" : "Sports",
+    "business" : "Business",
+    "entertainment" : "Entertainment",
+    "general" : "General",
+    "health" : "Health",
+    "science" : "Science",
+    "technology" : "Technology", 
+    "environment" : "Environment" , 
+    "categories" : "Categories",
+    "search" : "Search",
+    "error" : "Error",
+    "no_internet" : "No Internet",
+    "try_again" : "Try Again",
+    "somethingwentwrong" : "Something went wrong" , 
+    "settings" : "Settings" , 
+    "language" : "Language"  , 
+    "pick_categories" : "Pick your category of interest" , 
+    "politics" : "Politics" 
+
+}
