@@ -17,6 +17,7 @@
     "somethingwentwrong" : "Something went wrong" , 
     "settings" : "Settings" , 
     "language" : "Language"  , 
-    "pick_categories" : "Pick your category of interest"
+    "pick_categories" : "Pick your category of interest" , 
+    "politics" : "Politics" 
 
 }
