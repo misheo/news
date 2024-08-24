@@ -7,7 +7,8 @@ import 'package:news/features/home/logic/cubit/sources_cubit.dart';
 import 'source_widget.dart';
 
 class SourcesBarWidget extends StatelessWidget {
-  const SourcesBarWidget({super.key});
+  const SourcesBarWidget({super.key, required this.category});
+  final String category ;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class SourcesBarWidget extends StatelessWidget {
                 Text(state.message),
                 ElevatedButton(
                   onPressed: () {
-                    BlocProvider.of<SourcesCubit>(context).getSources();
+                    BlocProvider.of<SourcesCubit>(context).getSources(category);
                   },
                   child: Text("Retry"),
                 )

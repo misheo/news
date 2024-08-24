@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,7 +25,8 @@ class AppRouter {
           path: Routes.home,
           name: 'home',
           pageBuilder: (BuildContext context, GoRouterState state) {
-            return const MaterialPage(child: HomeScreen());
+          print(state.pathParameters['category']) ; 
+            return  MaterialPage(child: HomeScreen(category: state.pathParameters['category'] ?? '',));
           },
         ),
         GoRoute(

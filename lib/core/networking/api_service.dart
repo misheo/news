@@ -12,5 +12,6 @@ abstract class ApiService {
   @GET(ApiConstants.sources)
   Future<SourcesResponseBody> getSources(
     @Query("apikey") String apiKey,
+    @Query('category') String category,
   );
 }

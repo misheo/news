@@ -7,10 +7,10 @@ import '../sources_response_body.dart';
 class SourcesRebo {
   final ApiService _apiService;
   SourcesRebo(this._apiService);
-  Future<ApiResult<SourcesResponseBody>> getSources() async {
+  Future<ApiResult<SourcesResponseBody>> getSources(String category) async {
     try {
       final response = await _apiService.getSources(
-        ApiConstants.apiKey,
+        ApiConstants.apiKey, category 
       );
       if (response.status.toLowerCase() == 'error') {
         return ApiResult.failure(response.message ?? 'error accessing sources');

@@ -16,7 +16,7 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push('/home/:${category}');
+        context.push('/home/${category}');
       },
       child: Container( 
         decoration: BoxDecoration(

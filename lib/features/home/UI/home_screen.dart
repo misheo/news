@@ -8,8 +8,8 @@ import '../logic/cubit/sources_cubit.dart';
 import 'widgets/sources_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
+  const HomeScreen({super.key, required this.category});
+final String category ; 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // Now the context is guaranteed to have the BlocProvider
-      BlocProvider.of<SourcesCubit>(context).getSources();
+      BlocProvider.of<SourcesCubit>(context).getSources(widget.category);
     });
     super.initState();
   }
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           children: [
             SizedBox(height: 24.h),
-            SizedBox(height: 50.h, child: SourcesBarWidget()),
+            SizedBox(height: 50.h, child: SourcesBarWidget(category: widget.category,)),
             SizedBox(height: 26.h),
             // Expanded(
             //   child: GridView.builder(

@@ -21,9 +21,15 @@ class _ApiService implements ApiService {
   String? baseUrl;
 
   @override
-  Future<SourcesResponseBody> getSources(String apiKey) async {
+  Future<SourcesResponseBody> getSources(
+    String apiKey,
+    String category,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'apikey': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'apikey': apiKey,
+      r'category': category,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
