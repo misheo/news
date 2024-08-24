@@ -16,6 +16,7 @@
     "try_again" : "Try Again",
     "somethingwentwrong" : "Something went wrong" , 
     "settings" : "Settings" , 
-    "language" : "Language" 
+    "language" : "Language"  , 
+    "pick_categories" : "Pick your category of interest"
 
 }

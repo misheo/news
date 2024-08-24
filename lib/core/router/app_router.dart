@@ -1,50 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:news/core/DI/debendency_injection.dart';
 
+import '../../features/categorys/ui/category_screen.dart';
 import '../../features/home/UI/home_screen.dart';
-import '../../features/home/logic/cubit/sources_cubit.dart';
 import 'routes.dart';
 
 class AppRouter {
-  final GlobalKey<NavigatorState> rootNavigatorKey =
-      GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> shellNavigatorKey =
-      GlobalKey<NavigatorState>();
   late final GoRouter _router;
 
   AppRouter() {
     _router = GoRouter(
       debugLogDiagnostics: true,
       routes: <RouteBase>[
-        ShellRoute(
-          navigatorKey: shellNavigatorKey,
-          builder: (BuildContext context, GoRouterState state, child) {
-            return const HomeScreen();
+        GoRoute(
+          path: Routes.category,
+          name: 'category',
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            return const MaterialPage(child: CategoryScreen());
           },
-          routes: <RouteBase>[
-            GoRoute(
-              path: Routes.home,
-              name: 'home',
-              builder: (BuildContext context, GoRouterState state) {
-                return  const HomeScreen() ; 
-                
-              },
-            ),
-            GoRoute(
-              path: Routes.details,
-              parentNavigatorKey: shellNavigatorKey,
-              name: 'details',
-              builder: (BuildContext context, GoRouterState state) {
-                return const Scaffold();
-              },
-            ),
-          ],
+        ),
+        GoRoute(
+          path: Routes.home,
+          name: 'home',
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            return const MaterialPage(child: HomeScreen());
+          },
+        ),
+        GoRoute(
+          path: Routes.details,
+          name: 'details',
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            return const MaterialPage(child: CategoryScreen());
+          },
         ),
       ],
     );
   }
 
-  get router => _router;
+  GoRouter get router => _router;
 }

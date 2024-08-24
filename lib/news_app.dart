@@ -6,7 +6,6 @@ import 'core/DI/debendency_injection.dart';
 import 'core/router/app_router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'features/home/logic/cubit/sources_cubit.dart';
 
 class NewsApp extends StatelessWidget {
@@ -21,7 +20,10 @@ class NewsApp extends StatelessWidget {
           create: (context) => getIt<SourcesCubit>(),
           child: MaterialApp.router(
             theme: AppTheme.lightTheme,
-            routerConfig: AppRouter().router,
+            routerConfig: AppRouter().router,  // Use routerConfig instead of routeInformationParser
+            debugShowCheckedModeBanner: false,
+            title: 'News',
+
             localizationsDelegates: const [
               AppLocalizations.delegate, // Add this line
               GlobalMaterialLocalizations.delegate,
