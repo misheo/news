@@ -26,7 +26,7 @@ class CategoryScreen extends StatelessWidget {
             textAlign: TextAlign.start,
           ),
           SizedBox(height: 20.h),
-          Expanded(child: CategoryGridWidget())
+          const Expanded(child: CategoryGridWidget())
         ],
       ),
     );

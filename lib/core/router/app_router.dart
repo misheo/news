@@ -10,6 +10,7 @@ class AppRouter {
 
   AppRouter() {
     _router = GoRouter(
+       initialLocation: Routes.category,
       debugLogDiagnostics: true,
       routes: <RouteBase>[
         GoRoute(
